@@ -1,5 +1,4 @@
 # skeleton
-========
 
 Starter skeleton for a Node.js web app.  
 Using: express.js, mongodb, stylus, jade, gulp, bower

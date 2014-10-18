@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/izolate/skeleton",
   "devDependencies": {
+    "bower": "^1.3.12",
     "express": "^4.9.8",
     "jade": "^1.7.0",
     "winston": "^0.8.1"

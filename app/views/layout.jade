@@ -1,7 +1,11 @@
 doctype html
-html
+html(lang='en')
   head
-    title Skeleton
+    include components/head
 
   body
-    block body
+    block body-start
+    block body-end
+
+  //- SCRIPTS
+  block scripts

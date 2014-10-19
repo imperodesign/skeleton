@@ -1,26 +1,24 @@
 # skeleton
 
-Starter skeleton for a Node.js web app.  
-Using: express.js, mongodb, stylus, jade, gulp, bower
+Starter skeleton for a Node.js web app. A minimal, elegant foundation that aims to reduce the time it takes to build an application from scratch.
+
+**Uses**:
+* express.js
+* mongodb
+* stylus
+* jade
+* gulp
+* bower
+* require.js
 
 ## Installation
 
-### Build
 ```
 cd { repo_dir }
 npm install
 bower install
-```
+gulp watch | gulp build
 
-### Symlink trick
-Used for syntactically cleaner require() statements. [Source.](https://github.com/focusaurus/express_code_structure#the-app-symlink-trick)
-
-```
-cd node_modules && ln -nsf ../app
-```
-
-### Run
-```
-gulp watch
 node app/index.js
 ```
+The `gulp watch` command is for development, and `gulp build` for production.

@@ -1,19 +1,15 @@
 var gulp = require('gulp');
-var stylus = require('gulp-stylus');
-var autoprefixer = require('gulp-autoprefixer');
-var csso = require('gulp-csso');
+var requireDir = require('require-dir');
 
-gulp.task('stylus', function () {
-  return gulp.src('app/assets/styl/*.styl')
-    .pipe(stylus())
-    .pipe(autoprefixer())
-    .pipe(csso())
-    .pipe(gulp.dest('app/assets/css'));
-})
+// require individual tasks
+requireDir('./gulp/tasks', { recursive: true });
 
-// TASKS
-gulp.task('build', ['stylus'])
+// development task
+gulp.task('develop', ['css'], function () {
+  gulp.start('watch');
+});
 
-gulp.task('watch', ['build'], function () {
-  gulp.watch('app/assets/styl/**/*.styl', ['stylus'])
-})
+// build task
+//gulp.task('watch', ['build'], function () {
+//  gulp.watch('app/assets/styl/**/*.styl', ['stylus'])
+//})

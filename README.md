@@ -9,7 +9,7 @@ Starter skeleton for a Node.js web app. A minimal, elegant foundation that aims 
 * jade
 * gulp
 * bower
-* require.js
+* browserify
 
 ## Installation
 
@@ -17,8 +17,8 @@ Starter skeleton for a Node.js web app. A minimal, elegant foundation that aims 
 cd { repo_dir }
 npm install
 bower install
-gulp watch | gulp build
+gulp develop | gulp build
 
 node app/index.js
 ```
-The `gulp watch` command is for development, and `gulp build` for production.
+The `gulp develop` is for development and watches for file changes. `gulp build` is used for production.

@@ -8,6 +8,4 @@ requireDir('./gulp/tasks', { recurse: true });
 gulp.task('develop', ['css', 'watch']);
 
 // build task
-//gulp.task('watch', ['build'], function () {
-//  gulp.watch('app/assets/styl/**/*.styl', ['stylus'])
-//})
+gulp.task('build', ['css']);

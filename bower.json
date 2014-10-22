@@ -17,6 +17,8 @@
     "tests"
   ],
   "devDependencies": {
-    "requirejs": "~2.1.15"
+    "requirejs": "~2.1.15",
+    "jquery": "~2.1.1",
+    "jquery.serializeJSON": "~2.4.1"
   }
 }

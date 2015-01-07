@@ -29,3 +29,6 @@ app/assets/vendor
 
 # Users Environment Variables
 .lock-wscript
+
+# dist
+app/assets/dist

@@ -14,8 +14,8 @@ app.use('/assets', express.static(__dirname + '/assets'));
 
 // routes
 [
-  'app/site/routes'
-  // ...
+  'app/routes/site'
+  // add more...
 ].forEach(function (routePath) {
   require(routePath)(app);
 });

@@ -1,5 +1,17 @@
-var Config = function () {
-  this.assetDirectory = 'app/assets';
+var config = {};
+
+// directories
+config.dir = {
+  assets: 'app/assets',
+  dist: 'app/assets/dist',
+  styl: 'app/assets/src/styl',
+  js: 'app/assets/src/js'
 };
 
-module.exports = new Config();
+// index files
+config.index = {
+  js: config.dir.js + '/index.js',
+  styl: config.dir.js + '/index.styl'
+};
+
+module.exports = config;

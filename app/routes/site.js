@@ -1,4 +1,4 @@
-function home(req, res) {
+function home(req, res, next) {
   res.render('pages/home');
 }
 

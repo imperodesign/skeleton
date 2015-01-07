@@ -9,7 +9,7 @@ Starter skeleton for a Node.js web app. A minimal, elegant foundation that aims 
 * jade
 * gulp
 * bower
-* require.js
+* browserify
 
 ## Installation
 

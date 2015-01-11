@@ -1,4 +1,8 @@
-require('./config')(app);
+import config from './config';
+import controller from './controllers/controller';
+
+let app = {};
+app = config(app);
 
 // controllers
-require('./controllers/controller')(app);
+controller(app);

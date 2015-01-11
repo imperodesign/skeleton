@@ -1,8 +1,7 @@
 /**
  * Example controller
  */
-function Controller(app) {
-
+export default function controller(app) {
+  // ...
+  return app;
 }
-
-config.exports = Controller;

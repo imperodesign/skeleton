@@ -7,5 +7,5 @@ gulp.task('css', function () {
     .pipe(plugins.stylus())
     .pipe(plugins.autoprefixer())
     .pipe(plugins.csso())
-    .pipe(gulp.dest(config.dir.dist + '/css'));
+    .pipe(gulp.dest(config.dir.dist));
 });

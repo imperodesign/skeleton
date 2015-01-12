@@ -1,8 +1,6 @@
 /**
  * Example model
  */
-function Model() {
-
+export default class Model {
+  // ...
 }
-
-config.exports = Model;

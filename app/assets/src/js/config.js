@@ -1,5 +1,5 @@
-var config = {};
+export default function config(app) {
+  app.config = {};
 
-module.exports = function(app) {
-  app.config = config;
-};
+  return app;
+}

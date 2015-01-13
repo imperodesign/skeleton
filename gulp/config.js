@@ -11,7 +11,7 @@ config.dir = {
 // index files
 config.index = {
   js: config.dir.js + '/index.js',
-  styl: config.dir.js + '/index.styl'
+  styl: config.dir.styl + '/index.styl'
 };
 
 module.exports = config;

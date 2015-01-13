@@ -1,5 +1,5 @@
 var express = require('express');
-var config = require('app/config');
+var config = require('./config');
 var app = express();
 
 // logs
@@ -14,7 +14,7 @@ app.use('/assets', express.static(__dirname + '/assets'));
 
 // routes
 [
-  'app/routes/site'
+  './routes/site'
   // add more...
 ].forEach(function (routePath) {
   require(routePath)(app);

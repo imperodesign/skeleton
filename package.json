@@ -32,7 +32,8 @@
     "rupture": "^0.6.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.0.0",
-    "winston": "^0.8.1"
+    "winston": "^0.8.1",
+    "form-serializer": "*"
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",

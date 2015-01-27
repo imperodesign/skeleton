@@ -1,7 +1,7 @@
 /**
  * Example controller
  */
-export default function controller(app) {
+export default (app) => {
   // ...
   return app;
 }

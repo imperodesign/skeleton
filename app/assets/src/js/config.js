@@ -1,4 +1,4 @@
-export default function config(app) {
+export default (app) => {
   app.config = {};
 
   return app;

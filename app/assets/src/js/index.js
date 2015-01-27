@@ -1,7 +1,7 @@
 import config from './config';
 import controller from './controllers/controller';
 
-let app = {};
+let app = window.app = {};
 app = config(app);
 
 // controllers

@@ -1,3 +1,5 @@
+![Logo](https://raw.githubusercontent.com/imperodesign/skeleton/master/app/assets/src/img/skeleton-logo.png?raw=true)
+
 # app skeleton
 
 Starter skeleton for a Node.js web app. A minimal, elegant foundation that aims to reduce the time it takes to build an application from scratch.

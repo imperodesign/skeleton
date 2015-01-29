@@ -1,3 +1,7 @@
 {
-  "esnext": true
+  "esnext": true,
+  "indent": 2,
+  "newcap": true,
+  "node": true,
+  "quotmark": "single"
 }

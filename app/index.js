@@ -13,6 +13,9 @@ app.set('view engine', 'jade');
 app.use('/assets', express.static(__dirname + '/assets'));
 
 // routes
+var module = require('./module/routes');
+app.use('/module', module);
+
 [
   './routes/site'
   // add more...

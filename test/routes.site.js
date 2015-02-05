@@ -1,8 +1,6 @@
 var assert = require('chai').assert;
 var siteRoutes = require('../app/routes/site').routes;
 
-console.log(siteRoutes);
-
 describe('Site routes', function() {
   describe('GET /', function() {
 

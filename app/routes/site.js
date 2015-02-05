@@ -1,10 +1,10 @@
-// Handlers
+// handlers
 function home(req, res, next) {
   res.status(200);
   res.render('pages/home');
 }
 
-// Setup
+// define routes (for tests)
 var siteRoutes = {
   '/': {
     method: 'get',
@@ -12,12 +12,13 @@ var siteRoutes = {
   }
 };
 
+// setup
 function setup(app) {
   app.get('/', siteRoutes['/'].fn)
 }
 
-// Export the handlers
+// export the handlers
 exports.routes = siteRoutes;
 
-// Setup
+// export the setup function
 exports.setup = setup;

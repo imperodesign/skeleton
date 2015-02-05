@@ -8,7 +8,8 @@ config.express = {
 
 config.mongodb = {
   port: process.env.MONGODB_PORT || 27017,
-  host: process.env.MONGODB_HOST || 'localhost'
+  host: process.env.MONGODB_HOST || 'localhost',
+  dbname: process.env.MONGODB_NAME || 'impdb'
 };
 
 if (PRODUCTION) {

@@ -1,9 +1,17 @@
 var express = require('express');
+var bodyParser = require('body-parser')
 var config = require('./config');
 var app = express();
+var mongoose = require('mongoose');
 
 // logs
 var log = require('winston').loggers.get('app:server');
+
+// parser
+app.use(bodyParser.json());       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+}));
 
 // views
 app.set('views', __dirname + '/views');
@@ -14,7 +22,8 @@ app.use('/assets', express.static(__dirname + '/assets'));
 
 // routes
 [
-  './routes/site'
+  './routes/site',
+  './routes/users'
   // add more...
 ].forEach(function (routePath) {
   require(routePath).setup(app);
@@ -32,7 +41,10 @@ app.use(function(error, req, res, next) {
   res.render('pages/errors/500.jade', {title:'500: Internal Server Error', error: error});
 });
 
+// connect to mongo
+mongoose.connect('mongodb://' + config.mongodb.host + ':' + config.mongodb.port + '/' + config.mongodb.dbname);
 
+// start the http server
 app.listen(config.express.port, config.express.ip, function (error) {
   if (error) {
     log.error('Unable to listen for connections', error);

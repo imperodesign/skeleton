@@ -3,11 +3,15 @@
  */
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var ObjectId = Schema.ObjectId;
 var bCrypt = require('bcrypt-nodejs');
 
 // define schema
 var schema = new Schema({
-  email: String,
+  ObjectId: ObjectId,
+  email: {type: String, unique: true},
+  firstname: {type: String},
+  lastname: {type: String},
   password: String,
   created_at: {type: Date, default: Date.now},
 });
@@ -39,21 +43,24 @@ schema.methods.updatePassword = function(pass, cb) {
   }
 };
 
+// password setter
+schema.path('password').set(function(v) {
+  return this.createHash(v);
+});
+
 // create model
 var User = mongoose.model('users', schema);
 
-// validate unique email address
+// validate repeat password
 schema.pre('save', function(next, done) {
   var self = this;
-  this.model('users').find({ email: self.email }, function(err, resp) {
-    if (err) done(err);
-
-    // success: if email is unregistered, or queried self document
-    if (!resp.length || resp[0]._id.equals(self._id) )
-      next();
-    else
-      done(new Error('Email is already registered'));
-  }).limit(1);
+/*
+  if(this.password !== this.repeat_password) {
+    console.log('Error: Password mismatch')
+    next(new Error('Password mismatch'));
+  }
+*/
+  next();
 });
 
 module.exports = User;

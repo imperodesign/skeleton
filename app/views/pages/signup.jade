@@ -1,0 +1,21 @@
+extend ../layout
+
+append body-start
+  h1 Sign Up
+  form(name = "find", action = "/users/signup", method = "post")
+    | Firstname
+    input(type="text", name="firstname", id="firstname")
+    br
+    | Lastname
+    input(type="text", name="lastname", id="lastname")
+    br
+    | Email
+    input(type="text", name="email", id="email")
+    br
+    | Password
+    input(type="password", name="password", id="password")
+    br
+    | Repeat Password
+    input(type="password", name="repeat_password", id="repeat_password")
+    br
+    input(type="submit", value="Sign Up")

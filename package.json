@@ -4,7 +4,10 @@
   "description": "Starter skeleton for a web app",
   "main": "app/index.js",
   "scripts": {
-    "test": "mocha test"
+    "pretest": "npm install",
+    "test": "mocha test",
+    "prestart": "npm install",
+    "start": "node app/index.js"
   },
   "repository": {
     "type": "git",
@@ -32,6 +35,7 @@
     "jade": "^1.7.0",
     "require-dir": "^0.1.0",
     "rupture": "^0.6.1",
+    "sinon": "^1.12.2",
     "supertest": "^0.15.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.0.0",

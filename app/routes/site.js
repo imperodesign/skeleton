@@ -1,24 +1,9 @@
-// handlers
-function home(req, res, next) {
-  res.status(200);
-  res.render('pages/home');
-}
-
-// define routes (for tests)
-var siteRoutes = {
-  '/': {
-    method: 'get',
-    fn: home
-  }
-};
+var siteCtrl = require('../controllers/site.js');
 
 // setup
 function setup(app) {
-  app.get('/', siteRoutes['/'].fn)
+  app.get('/', siteCtrl.home);
 }
 
-// export the handlers
-exports.routes = siteRoutes;
-
 // export the setup function
-exports.setup = setup;
+module.exports = setup;

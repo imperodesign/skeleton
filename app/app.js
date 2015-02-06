@@ -5,7 +5,10 @@ var app = express();
 var mongoose = require('mongoose');
 
 // logs
-var log = require('winston').loggers.get('app:server');
+var logger = app.logger = require('./lib/logger');
+
+// log configuring express
+logger.info("configuring express ...");
 
 // parser
 app.use(bodyParser.json());       // to support JSON-encoded bodies
@@ -26,7 +29,7 @@ app.use('/assets', express.static(__dirname + '/assets'));
   './routes/users'
   // add more...
 ].forEach(function (routePath) {
-  require(routePath).setup(app);
+  require(routePath)(app);
 });
 
 // Handle 404
@@ -42,15 +45,16 @@ app.use(function(error, req, res, next) {
 });
 
 // connect to mongo
+logger.info("connecting to mongodb ...");
 mongoose.connect('mongodb://' + config.mongodb.host + ':' + config.mongodb.port + '/' + config.mongodb.dbname);
 
 // start the http server
 app.listen(config.express.port, config.express.ip, function (error) {
   if(error) {
-    log.error('Unable to listen for connections', error);
+    logger.error('unable to listen for connections', error);
     process.exit(10);
   }
-  log.info('app is listening on http://' +
+  logger.info('app is listening on http://' +
     config.express.ip + ':' + config.express.port);
 });
 

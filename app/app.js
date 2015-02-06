@@ -46,7 +46,7 @@ mongoose.connect('mongodb://' + config.mongodb.host + ':' + config.mongodb.port 
 
 // start the http server
 app.listen(config.express.port, config.express.ip, function (error) {
-  if (error) {
+  if(error) {
     log.error('Unable to listen for connections', error);
     process.exit(10);
   }

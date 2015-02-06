@@ -1,24 +1,23 @@
-var bCrypt = require('bcrypt-nodejs');
-var User = require("../models/user.js");
+var crypto = require('crypto');
+var shasum = crypto.createHash('sha1');
+var User = require('../models/user.js');
 var UserModel = new User();
 
 exports.signup = function(req, res) {
 
-  // console.log(req.method.toLowerCase());
-
-  if(req.method.toLowerCase() != "post") {
-    res.render("pages/signup", {layout: false});
+  if(req.method.toLowerCase() !== 'post') {
+    res.render('pages/signup', {layout: false});
   }
   else {
     // console.log(req.body);
     new User(req.body).save(function (err) {
       if(err) {
         //return handleError(err);
-        res.status(400).send("User not created");
+        res.send('User not created. ' + err + '.', {'Content-type' : 'text/plain'}, 400);
         return;
       }
       // saved
-      res.status(201).send("User created");
+      res.send('User created', {'Content-type' : 'text/plain'}, 201);
     });
   }
 
@@ -26,27 +25,30 @@ exports.signup = function(req, res) {
 
 exports.login = function(req, res) {
 
-  if(req.method.toLowerCase() != "post") {
-    res.render("pages/login", {layout: false});
+  if(req.method.toLowerCase() !== 'post') {
+    res.render('pages/login', { layout: false });
   } else {
-    user.findOne({email: req.body.email}, function(err, result) {
+    User.findOne({email: req.body.email}, function(err, result) {
 
-      if(err) console.log(err);
+      console.log(result);
 
-      if(result == null) {
-        res.send('invalid username', {'Content-type' : 'text/plain'}, 403);
+      if(err) { throw err; }
+
+      if(result === null) {
+        res.send('Invalid username', {'Content-type' : 'text/plain'}, 401);
       } else {
         auth(result);
       }
     });
 
     function auth(userRes) {
-      if(!UserModel.createHash(req.body.password) == userRes.password) {
-         res.send('invalid password', {'Content-type' : 'text/plain'}, 403);
+
+      if(UserModel.createHash(req.body.password) !== userRes.password) {
+        res.send('Invalid password', {'Content-type' : 'text/plain'}, 401);
       } else {
-         console.log(userRes._id);
-         user.update({_id : userRes._id}, {'$set' : {token : Date.now}});
-         res.status(200).send(userRes);
+        // TODO: find out why update doesn't work
+        User.update({ _id: userRes._id }, { '$set': { last_login: Date.now() } });
+        res.status(202).json(userRes);
       }
     }
   }

@@ -6,6 +6,7 @@ var express = require('express')
   , methodOverride = require('method-override')
   , config = require('./config')
   , app = express()
+  , MongoStore = require('connect-mongo')(express) // need to store session later
   , mongoose = require('mongoose')
   , logger = require('./lib/logger');
 

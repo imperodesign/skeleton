@@ -1,12 +1,6 @@
 doctype html
-html(lang='en')
+html
   head
-    include components/head
-
+    title=title
   body
-    block body-start
-    block body-end
-
-  //- SCRIPTS
-  block scripts
-    script(src='/public/dist/index.js')
+    block content

@@ -1,12 +1,28 @@
-var usersCtrl = require('../controllers/users.js');
+var express = require('express');
+var router = express.Router();
 
-// setup
-function setup(app) {
-  app.get('/users/login',usersCtrl.login);
-  app.post('/users/login', usersCtrl.login);
-  app.get('/users/signup', usersCtrl.signup);
-  app.post('/users/signup', usersCtrl.signup);
+module.exports = function(passport) {
+
+	var siteCtrl = require('../controllers/site')();
+	var usersCtrl = require('../controllers/users')(passport);
+
+	router.get('/login', usersCtrl.getLogin);
+
+	router.post('/login', passport.authenticate('login', {
+		successRedirect: '/dashboard',
+		failureRedirect: '/users/login',
+		failureFlash : true
+	}));
+
+	router.get('/signup', usersCtrl.getSignup);
+
+	router.post('/signup', passport.authenticate('signup', {
+		successRedirect: '/dashboard',
+		failureRedirect: '/users/signup',
+		failureFlash : true
+	}));
+
+	router.get('/signout', usersCtrl.getSignout);
+
+	return router;
 }
-
-// export the setup function
-module.exports = setup;

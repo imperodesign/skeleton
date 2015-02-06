@@ -1,19 +1,13 @@
-extend ../layout
+extends ../layout
 
-append body-start
-  h1 Sign Up
-  form(name = "find", action = "/users/signup", method = "post")
-    | Firstname
-    input(type="text", name="firstname", id="firstname")
-    br
-    | Lastname
-    input(type="text", name="lastname", id="lastname")
-    br
-    | Email
-    input(type="text", name="email", id="email")
-    br
-    | Password
-    input(type="password", name="password", id="password")
-    br
-    input(type="hidden", name="_csrf", value="#{csrfToken}")
-    input(type="submit", value="Sign Up")
+block content
+	form(class='', action='/users/signup', method='POST')
+		input(type='text', name='username', class='form-control', placeholder='Username',required, autofocus)
+		input(type='password', name='password', class='form-control nomargin', placeholder='Password', required)
+		input(type='email', name='email', class='form-control', placeholder='Email',required)
+		input(type='text', name='firstName', class='form-control', placeholder='First Name',required)
+		input(type='text', name='lastName', class='form-control', placeholder='Last Name',required)
+		input(type="hidden", name="_csrf", value="#{csrfToken}")
+		button(class='', type='submit') Register
+	if message
+		h1 #{message}

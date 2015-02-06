@@ -1,7 +1,7 @@
 var chai = require('chai'),
   assert = chai.assert,
   expect = chai.expect,
-  siteCtrl = require('../app/controllers/site');
+  siteCtrl = require('../app/controllers/site')();
 
 describe('Site Routes', function() {
   describe('GET /', function() {

@@ -1,9 +1,13 @@
-var siteCtrl = require('../controllers/site.js');
+var express = require('express');
+var router = express.Router();
 
-// setup
-function setup(app) {
-  app.get('/', siteCtrl.home);
+module.exports = function(passport) {
+
+	var siteCtrl = require('../controllers/site')();
+	var usersCtrl = require('../controllers/users')(passport);
+
+	router.get('/', siteCtrl.home);
+	router.get('/dashboard', siteCtrl.dashboard);
+
+	return router;
 }
-
-// export the setup function
-module.exports = setup;

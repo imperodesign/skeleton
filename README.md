@@ -11,7 +11,7 @@ Starter skeleton for a Node.js web app. A minimal, elegant foundation that aims 
 
 **TODO**
 * Integrate Mail Service APIs
-* User Recovery password 
+* User Recovery password
 * Basic CSS style
 
 ## Installation
@@ -21,6 +21,6 @@ $ npm install && bower install
 $ gulp [develop|build]
 
 # start server
-$ node app/index.js
+$ npm start
 ```
 Command `gulp develop` watches for file changes and contains source maps, and should be used in development. `gulp build` by contrast, strips and minifies code for production.

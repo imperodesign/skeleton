@@ -1,9 +1,10 @@
 {
   "name": "skeleton",
   "version": "1.0.0",
-  "homepage": "https://github.com/izolate/skeleton",
+  "homepage": "https://github.com/imperodesign/skeleton",
   "authors": [
-    "yosh <yoshtalwar@gmail.com>"
+    "yosh <yoshtalwar@gmail.com>",
+    "jacopo <jacopo.dali@gmail.com>"
   ],
   "description": "starter skeleton for a node web app",
   "main": "app/index.js",

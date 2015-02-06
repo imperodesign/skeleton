@@ -1,24 +1,32 @@
 {
   "name": "skeleton",
   "version": "1.0.0",
-  "description": "Starter skeleton for a web app",
-  "main": "app/index.js",
+  "homepage": "https://github.com/imperodesign/skeleton",
+  "authors": [
+    "yosh <yoshtalwar@gmail.com>",
+    "jacopo <jacopo.dali@gmail.com>"
+  ],
+  "description": "starter skeleton for a node web app",
   "scripts": {
-    "pretest": "npm install",
-    "test": "mocha test",
-    "prestart": "npm install",
-    "start": "node app/index.js"
+    "test": "mocha",
+    "start": "node ./bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/izolate/skeleton.git"
+  "dependencies": {
+    "bcrypt-nodejs": "*",
+    "body-parser": "~1.0.0",
+    "connect-flash": "*",
+    "cookie-parser": "~1.0.1",
+    "csurf": "^1.3.6",
+    "debug": "~0.7.4",
+    "express": "~4.2.0",
+    "express-session": "~1.0.4",
+    "jade": "~1.3.0",
+    "mongoose": "~3.8.12",
+    "morgan": "~1.0.0",
+    "passport": "~0.2.0",
+    "passport-local": "~1.0.0",
+    "static-favicon": "~1.0.0"
   },
-  "author": "izolate <yoshtalwar@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/izolate/skeleton/issues"
-  },
-  "homepage": "https://github.com/izolate/skeleton",
   "devDependencies": {
     "6to5ify": "^3.1.2",
     "bower": "^1.3.12",
@@ -40,15 +48,5 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.0.0",
     "winston": "^0.8.1"
-  },
-  "dependencies": {
-    "body-parser": "^1.11.0",
-    "connect-mongo": "^0.7.0",
-    "cookie-parser": "^1.3.3",
-    "csurf": "^1.6.6",
-    "express-session": "^1.10.2",
-    "method-override": "^2.3.1",
-    "mongoose": "^3.8.21",
-    "validator": "^3.28.0"
   }
 }

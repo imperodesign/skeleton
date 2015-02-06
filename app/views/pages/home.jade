@@ -1,4 +1,8 @@
-extend ../layout
+extends ../layout
 
-append body-start
-  h1 We Are Impero
+block content
+  h1 Welcome friends
+  br
+  a(href='/users/login') Login
+  br
+  a(href='/users/signup') Signup

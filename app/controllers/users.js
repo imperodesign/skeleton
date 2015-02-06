@@ -1,61 +1,41 @@
-var crypto = require('crypto')
-  , shasum = crypto.createHash('sha1')
-  , mongoose = require('mongoose')
-  , Schema = mongoose.Schema
-  , ObjectId = Schema.ObjectId
-  , User = require('../models/user.js')
-  , UserModel = new User()
-  , logger = require('../lib/logger')
 
-exports.signup = function(req, res) {
+module.exports = function(passport) {
 
-  if(req.method.toLowerCase() !== 'post') {
-    res.render('pages/signup', { csrfToken: req.csrfToken(), layout: false });
-  }
-  else {
-    // console.log(req.body);
-    new User(req.body).save(function (err) {
-      if(err) {
-        var e = 'User not created. ' + err;
-        logger.debug(e);
-        res.status(400).send(e);
-        return;
-      }
-      // saved
-      logger.debug('User created');
-      res.status(201).send('User created');
+  var ctrl = {};
+
+  function getLogin(req, res) {
+    // Display the Login page with any flash message, if any
+    res.render('pages/login', {
+      csrfToken: req.csrfToken(),
+      message: req.flash('message')
     });
   }
+  ctrl.getLogin = getLogin;
 
-}
-
-exports.login = function(req, res) {
-
-  if(req.method.toLowerCase() !== 'post') {
-    res.render('pages/login', { csrfToken: req.csrfToken(), layout: false });
-  } else {
-    User.findOne({email: req.body.email}, function(err, result) {
-
-      if(err) { throw err; }
-
-      if(result === null) {
-        res.status(401).send('Invalid username');
-      } else {
-        auth(result);
-      }
-    });
-
-    function auth(userRes) {
-      if(UserModel.createHash(req.body.password) !== userRes.password) {
-        logger.debug('Invalid password');
-        res.status(401).send('Invalid password');
-      } else {
-        User.update({ _id: ObjectId(userRes._id) }, {
-          $currentDate: { time: true }
-        });
-        logger.debug('Auth OK');
-        res.status(202).json(userRes);
-      }
-    }
+  function postLogin() {
+    // not used
   }
+  ctrl.postLogin = postLogin;
+
+  function getSignup(req, res){
+    res.render('pages/signup', {
+      csrfToken: req.csrfToken(),
+      message: req.flash('message')
+    });
+  }
+  ctrl.getSignup = getSignup;
+
+  function postSignup() {
+    // not used
+  }
+  ctrl.postSignup = postSignup;
+
+  function getSignout(req, res) {
+    req.logout();
+    res.redirect('/');
+  }
+  ctrl.getSignout = getSignout;
+
+  return ctrl;
+
 }

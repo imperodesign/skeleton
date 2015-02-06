@@ -5,9 +5,13 @@ Starter skeleton for a Node.js web app. A minimal, elegant foundation that aims 
 
 **Components:** express.js, mongoDB, stylus, jade, gulp.js, bower, browserify, 6to5.js
 
-**TODO**
+**DONE**
 * User accounts
 * Forms w/ CSRF
+
+**TODO**
+* Integrate Mail Service APIs
+* User Recovery password 
 * Basic CSS style
 
 ## Installation

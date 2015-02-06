@@ -1,10 +1,11 @@
 /**
  * User model
  */
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var ObjectId = Schema.ObjectId;
-var crypto = require('crypto');
+var mongoose = require('mongoose')
+  , Schema = mongoose.Schema
+  , ObjectId = Schema.ObjectId
+  , crypto = require('crypto')
+  , validator = require('validator');
 
 // define schema
 var schema = new Schema({
@@ -12,10 +13,10 @@ var schema = new Schema({
   email: { type: String, unique: true },
   firstname: { type: String },
   lastname: { type: String },
-  password: String,
+  password: { type: String },
   last_login: { type: Date, default: null },
   created_at: { type: Date, default: Date.now },
-  last_modified: { type: Date, default: Date.now },
+  last_modified: { type: Date, default: Date.now }
 });
 
 /*
@@ -53,26 +54,35 @@ schema.methods.createHash = function(password) {
   return shasum.digest('hex');;
 };
 
-// password setter
-schema.path('password').set(function(v) {
-  return this.createHash(v);
-});
-
 // create model
 var User = mongoose.model('users', schema);
 
-// validate unique email address
 schema.pre('save', function(next, done) {
   var self = this;
-  this.model('users').find({ email: self.email }, function(err, resp) {
+
+  // validate email is not empty
+  if(validator.trim(self.email) === '') { done(new Error('Email is mandatory')); return; }
+
+  // validate email is a real email
+  if(!validator.isEmail(self.email)) { done(new Error('Email is not valid')); return; }
+
+  // validate password is not empty
+  if(validator.trim(self.password) === '') { done(new Error('Password is mandatory')); return; }
+
+  // password setter
+  self.password = self.createHash(self.password);
+
+  // validate unique email address
+  this.model('users').find({ email: self.email }, function(err, data) {
     if (err) done(err);
 
     // success: if email is unregistered, or queried self document
-    if (!resp.length || resp[0]._id.equals(self._id) )
+    if (!data.length || data[0]._id.equals(self._id) )
       next();
     else
       done(new Error('Email is already registered'));
   }).limit(1);
+
 });
 
 

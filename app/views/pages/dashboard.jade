@@ -4,9 +4,9 @@ block content
 	h1 Welcome #{user.firstName}. Check your details below:
 	br
 	ul.user-details
-		li Username ---> #{user.username}
 		li Email    ---> #{user.email}
 		li First Name ---> #{user.firstName}
 		li Last Name ---> #{user.lastName}
+		li Last Login ---> #{user.lastLogin}
 	br
 	a(href='/users/signout', class='') Sign Out

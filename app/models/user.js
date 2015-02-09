@@ -1,11 +1,14 @@
-
-var mongoose = require('mongoose');
+var mongoose = require('mongoose')
+	, Schema = mongoose.Schema
+	, ObjectId = Schema.ObjectId;
 
 module.exports = mongoose.model('User',{
-	id: String,
-	username: String,
+	id: ObjectId,
+	email: { type: String, index: { unique: true } },
 	password: String,
-	email: String,
 	firstName: String,
-	lastName: String
+	lastName: String,
+	lastLogin: { type: Date, default: Date.now },
+	createdAt: { type: Date, default: Date.now },
+	lastEdit: { type: Date, default: null }
 });

@@ -7,7 +7,7 @@ module.exports = function(passport) {
 	var usersCtrl = require('../controllers/users')(passport);
 
 	router.get('/', siteCtrl.home);
-	router.get('/dashboard', siteCtrl.dashboard);
+	router.get('/dashboard', usersCtrl.isAuthenticated, siteCtrl.dashboard);
 
 	return router;
 }

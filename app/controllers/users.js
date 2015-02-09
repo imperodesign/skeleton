@@ -3,6 +3,19 @@ module.exports = function(passport) {
 
   var ctrl = {};
 
+  function isAuthenticated(req, res, next) {
+    // Passport adds isAuthenticated method to request object.
+    // A middleware is allowed to add properties to
+    // request and response objects
+    if (req.isAuthenticated()) {
+      return next();
+    }
+
+    // if the user is not authenticated then redirect him to the login page
+    res.redirect('/users/login');
+  }
+  ctrl.isAuthenticated = isAuthenticated;
+
   function getLogin(req, res) {
     // Display the Login page with any flash message, if any
     res.render('pages/login', {

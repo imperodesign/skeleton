@@ -22,7 +22,22 @@ module.exports = function(passport) {
 		failureFlash : true
 	}));
 
+	// router.get('/reset', usersCtrl.isAuthenticated, usersCtrl.getReset);
+
+	// router.post('/reset', usersCtrl.isAuthenticated, usersCtrl.postReset);
+
+
+	router.get('/forgot', usersCtrl.getForgot);
+
+	router.post('/forgot', usersCtrl.postForgot);
+
+	router.get('/forgot/:token', usersCtrl.getForgotToken);
+
+	router.post('/forgot/:token', usersCtrl.postForgotToken);
+
+
 	router.get('/signout', usersCtrl.getSignout);
 
 	return router;
+
 }

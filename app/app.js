@@ -8,6 +8,9 @@ var csrf = require('csurf');
 
 var config = require('./config');
 var mongoose = require('mongoose');
+
+var mandrill = require('node-mandrill')(config.mailServices.mandrill.apiKey);
+
 // Connect to DB
 mongoose.connect(config.mongodb.url);
 
@@ -36,6 +39,12 @@ app.use(passport.session());
  // and displaying in templates
 var flash = require('connect-flash');
 app.use(flash());
+
+// create a madrill middleware
+app.use(function(req, res, next){
+  req.mandrill = mandrill;
+  next();
+});
 
 // Initialize Passport
 var initPassport = require('./passport/init');

@@ -1,0 +1,10 @@
+extends ../layout
+
+block content
+	form(class='', action='/users/forgot/#{token}', method='POST')
+		input(type='password', name='newPassword' class='form-control', placeholder='New Password', required, autofocus)
+		input(type="hidden", name="_csrf", value="#{csrfToken}")
+		button(class='', type='submit') Change
+	br
+	if message
+		h1 #{message}

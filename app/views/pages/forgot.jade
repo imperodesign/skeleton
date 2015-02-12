@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+	form(class='', action='/users/forgot', method='POST')
+		input(type='text', name='email' class='form-control', placeholder='Email', value='#{user.email}' required, autofocus)
+		input(type="hidden", name="_csrf", value="#{csrfToken}")
+		button(class='', type='submit') Reset
+	a(href='/users/signup', class='') Create an account
+	span &nbsp; or &nbsp;
+	a(href='/users/login', class='') Login
+	br
+	if message
+		h1 #{message}

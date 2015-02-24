@@ -1,0 +1,17 @@
+---
+# add deploy key
+- name: ssh | add deploy key
+  copy:
+    src={{ deploy_key }}
+    dest={{ home_dir }}/.ssh/{{ deploy_key }}
+    mode=0600
+
+# clone application repository
+- name: ssh | clone repo
+  git:
+    repo={{ repo }}
+    dest={{ path }}
+    key_file={{ key_file }}
+    version={{ version }}
+    accept_hostkey=yes
+

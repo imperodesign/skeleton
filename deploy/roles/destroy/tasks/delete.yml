@@ -1,0 +1,23 @@
+# delete vhost file
+- name: destroy | delete vhost
+  file:
+    path='{{ item }}'
+    state=absent
+  with_items:
+    - '{{ nginx_config_dir }}/sites-enabled/{{ subdomain }}'
+    - '{{ nginx_config_dir }}/sites-available/{{ subdomain }}'
+  sudo: yes
+  notify: restart nginx
+
+# delete the server
+- name: destroy | stop server
+  command: pm2 delete {{ path }}/{{ server_file }}
+  args:
+    executable: '{{ binary_dir }}/pm2'
+    chdir: '{{ path }}'
+
+# delete the app directory
+- name: destroy | delete app directory
+  file:
+    path='{{ path }}'
+    state=absent

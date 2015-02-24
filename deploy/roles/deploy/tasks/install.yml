@@ -1,0 +1,21 @@
+# npm install
+- name: install | npm
+  npm:
+    path={{ path }}
+    executable={{ binary_dir }}/npm
+  when: npm.enabled
+
+# bower install
+- name: install | bower
+  shell: '{{ bower.command }} --config.interactive=false'
+  args:
+    chdir: '{{ path }}'
+    executable: '{{ binary_dir }}/bower'
+  when: bower.enabled
+
+# gulp commands
+- name: install | gulp
+  command: node_modules/.bin/gulp {{ gulp.command }}
+  args:
+    chdir: '{{ path }}'
+  when: gulp.enabled

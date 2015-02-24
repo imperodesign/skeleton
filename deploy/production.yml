@@ -1,0 +1,35 @@
+# production playbook
+---
+- hosts: production
+  user: ubuntu
+  vars:
+    # environment
+    home_dir: /home/{{ ansible_ssh_user }}
+    server_name: prd.impero.me
+
+    # application
+    repo: $REPO
+    subdomain: $SUBDOMAIN
+
+    # install
+    port: $PORT
+    path: '{{ home_dir }}/www/$SUBDOMAIN'
+    deploy_key: $DEPLOY_KEY.pem
+
+    # build
+    npm:
+      enabled: false
+      command: $NPM_COMMAND
+    bower:
+      enabled: false
+      command: $BOWER_COMMAND
+    gulp:
+      enabled: false
+      command: $GULP_COMMAND
+
+    # nginx
+    nginx_server_name: $DEDICATED_URL
+
+  roles:
+    - deploy
+    - destroy

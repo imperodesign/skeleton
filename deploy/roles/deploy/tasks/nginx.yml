@@ -1,0 +1,16 @@
+# make vhost file from template
+- name: nginx | make virtualhost
+  template:
+    src=vhost.j2
+    dest=/etc/nginx/sites-available/{{ subdomain }}
+  sudo: yes
+  notify: restart nginx
+
+# enable vhost
+- name: nginx | enable site
+  file:
+    src='{{ nginx_config_dir }}/sites-available/{{ subdomain }}'
+    dest='{{ nginx_config_dir }}/sites-enabled/{{ subdomain }}'
+    state=link
+  sudo: yes
+  notify: restart nginx

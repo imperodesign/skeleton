@@ -1,0 +1,36 @@
+server {
+  listen 80; ## listen for ipv4; this line is default and implied
+  # listen [::]:80 default ipv6only=on; ## listen for ipv6
+
+  # root {{ path }};
+  # index index.html index.htm;
+
+  # Make site accessible from url
+{% set server_name = '{0}.{1}'.format(subdomain, server_name) %}
+{% if nginx_server_name %}
+  server_name {{ nginx_server_name }} {{ server_name }};
+{% else %}
+  server_name {{ server_name }};
+{% endif %}
+
+  # proxy to node
+  location / {
+
+{% if nginx_allow_ip %}
+    # restrict access
+    allow {{ nginx_allow_ip }};
+    deny all;
+{% endif %}
+
+    # proxy to nginx server
+    proxy_pass http://127.0.0.1:{{ port }};
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header REMOTE_ADDR $remote_addr;
+    proxy_cache_bypass $http_upgrade;
+  }
+}

@@ -1,0 +1,30 @@
+# var defaults
+---
+# environment
+binary_dir: '{{ home_dir }}/local/bin'
+
+# application
+version: master
+
+# install
+server_file: server.json
+key_file: '{{ home_dir }}/.ssh/{{ deploy_key }}'
+
+# build
+npm:
+  enabled: false
+  command: install
+bower:
+  enabled: false
+  command: install
+gulp:
+  enabled: false
+  command: build
+
+# nginx
+nginx_config_dir: /etc/nginx
+nginx_server_name: ~
+nginx_allow_ip: ~
+
+create: false
+destroy: false

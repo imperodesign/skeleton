@@ -1,0 +1,11 @@
+- include: ssh.yml
+  tags: [deploy, ssh]
+
+- include: install.yml
+  tags: [deploy, install]
+
+- include: nginx.yml
+  tags: [deploy, nginx]
+
+- include: server.yml
+  tags: [deploy, server]

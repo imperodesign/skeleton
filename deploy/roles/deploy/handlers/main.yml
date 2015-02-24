@@ -1,0 +1,9 @@
+# restart Nginx process
+- name: restart nginx
+  service: name=nginx state=restarted
+  sudo: yes
+
+# ensure Nginx has started
+- name: ensure nginx has started
+  service: name=nginx state=started
+  sudo: yes

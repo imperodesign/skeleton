@@ -1,0 +1,26 @@
+---
+# start the server for the first time
+- name: server | start process for the first time
+  command: pm2 start {{ path }}/{{ server_file }}
+  args:
+    executable: '{{ binary_dir }}/pm2'
+    chdir: '{{ path }}'
+  tags: server-create
+  when: create
+
+# stop the app server
+- name: server | stop node server
+  command: pm2 stop {{ path }}/{{ server_file }}
+  args:
+    executable: '{{ binary_dir }}/pm2'
+    chdir: '{{ path }}'
+  tags: server-stop
+
+# and now start it
+- name: server | start node server
+  command: pm2 update {{ path }}/{{ server_file }}
+  args:
+    executable: '{{ binary_dir }}/pm2'
+    chdir: '{{ path }}'
+  notify: restart nginx
+  tags: server-start

@@ -1,9 +1,7 @@
-function helloWorld(req, res, next) {
+function helloWorld (req, res, next) {
   res.send('Hello World!')
 }
 
-function routes(app) {
+module.exports = function (app) {
   app.get('/', helloWorld)
 }
-
-module.exports = routes

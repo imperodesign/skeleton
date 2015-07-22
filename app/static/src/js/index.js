@@ -7,3 +7,5 @@ class App extends EventEmitter {
 }
 
 let app = window.app = new App()
+
+console.log('Skeleton app started')

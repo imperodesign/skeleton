@@ -1,11 +1,12 @@
-var gulp = require('gulp');
-var requireDir = require('require-dir');
+require('dotenv').load()
+const gulp = require('gulp')
 
 // require individual tasks
-requireDir('./gulp/tasks', { recurse: true });
+require('require-dir')('./gulp', {
+  recurse: true
+})
 
-// development task
-gulp.task('develop', ['css', 'js-dev', 'watch']);
+var tasks = ['css', 'js']
 
-// build task
-gulp.task('build', ['css', 'js-prd']);
+gulp.task('develop', tasks.concat(['watch']))
+gulp.task('build', tasks)

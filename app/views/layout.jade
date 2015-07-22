@@ -4,9 +4,7 @@ html(lang='en')
     include components/head
 
   body
-    block body-start
-    block body-end
+    block body
 
-  //- SCRIPTS
-  block scripts
-    script(src='/assets/dist/index.js')
+    block scripts
+      script(src='/static/dist/index.js')

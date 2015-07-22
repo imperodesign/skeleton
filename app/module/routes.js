@@ -1,16 +1,13 @@
 /**
- * routes for example module
+ * Routes for an example module
  */
-var router = require('express').Router();
+const router = module.exports = require('express').Router()
 
-// route-specific middleware
-router.use(function(req, res, next) {
-  //... logic
-  next();
-});
+router.use(function (req, res, next) {
+  // route-specific middleware
+  next()
+})
 
-router.get('/endpoint', function(req, res, next) {
-  res.json({ success: true });
-});
-
-module.exports = router;
+router.get('/endpoint', function (req, res, next) {
+  res.json({ message: 'Hello World!' })
+})

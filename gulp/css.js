@@ -3,7 +3,7 @@ const plugins = require('gulp-load-plugins')()
 const rupture = require('rupture')
 
 gulp.task('css', function () {
-  return gulp.src(`${process.env.STATIC_DIR}/src/style/index.styl`)
+  return gulp.src(`${process.env.STATIC_DIR}/src/styl/index.styl`)
     .pipe(plugins.stylus({
       use: [rupture()]
     }))

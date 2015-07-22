@@ -1,5 +1,5 @@
 function helloWorld (req, res, next) {
-  res.send('Hello World!')
+  res.render('pages/home')
 }
 
 module.exports = function (app) {

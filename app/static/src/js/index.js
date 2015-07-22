@@ -1,8 +1,9 @@
-import config from './config';
-import controller from './controllers/controller';
+import { EventEmitter } from 'events'
 
-let app = window.app = {};
-app = config(app);
+class App extends EventEmitter {
+  constructor() {
+    super()
+  }
+}
 
-// controllers
-controller(app);
+let app = window.app = new App()

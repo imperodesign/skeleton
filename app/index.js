@@ -3,10 +3,10 @@ const express = require('express')
 const app = express()
 
 // Configuration
-app.locals.pretty = (process.env.MINIFY === true)
+app.locals.pretty = (process.env.MINIFY === 'true')
 app.set('views', `${__dirname}/views`)
 app.set('view engine', 'jade')
-app.use('/static', express.static(`${__dirname}/assets`))
+app.use('/static', express.static(`${__dirname}/static`))
 
 // Routes
 require('./routes')(app)

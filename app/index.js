@@ -3,18 +3,18 @@ const express = require('express')
 const app = express()
 
 // Configuration
-app.locals.pretty = (process.env.MINIFY === 'true')
+app.set('port', process.env.NODE_PORT || 3000)
 app.set('views', `${__dirname}/views`)
 app.set('view engine', 'jade')
 app.use('/static', express.static(`${__dirname}/static`))
+app.locals.pretty = (process.env.MINIFY === 'true')
 
 // Routes
 require('./routes')(app)
 app.use('/module', require('./module/routes'))
 
 // Run
-app.listen(process.env.NODE_PORT, function (err) {
+app.listen(app.get('port'), function (err) {
   if (err) console.error(err)
-  else
-    console.log(`${process.env.APP_NAME} listening on: http://localhost:${process.env.NODE_PORT}`)
+  else console.log(`Server started: http://localhost:${app.get('port')}/`)
 })

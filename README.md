@@ -1,22 +1,41 @@
-![Logo](https://raw.githubusercontent.com/imperodesign/skeleton/master/app/static/src/img/skeleton-logo.png?raw=true)
+<p align='center'><img src='https://raw.githubusercontent.com/imperodesign/skeleton/master/app/static/src/img/skeleton-logo.png?raw=true'></p>
+
 # App Skeleton
 
-Starter skeleton for a Node.js web app. A minimal, elegant foundation that aims to reduce the time it takes to build an application from scratch.
+A starting point for a io.js application. A minimal, and hopefully elegant foundation that aims to reduce the time it takes to build an app from scratch.
 
-**Components:** express.js, mongoDB, stylus, jade, gulp.js, bower, browserify, 6to5.js
+Using ECMAScript 6/7 wherever possible, and staying true to the [12 factor app](http://12factor.net). Tuned for the needs of our agency [Impero](http://weareimpero.com), but available to the public.
 
-**TODO**
-* User accounts
-* Forms w/ CSRF
-* Basic CSS style
+### Components
+Type | Name
+--- | ---
+Programming language | [io.js](https://iojs.org)
+Web App framework | [Express.js](http://expressjs.com)
+Database | [MongoDB](https://www.mongodb.org)
+HTML Templating | [Jade](http://jade-lang.com)
+CSS Preprocessor | [Stylus](https://learnboost.github.io/stylus)
+Frontend modules | [Browserify](http://browserify.org)
+JavaScript transpiler | [Babel.js](http://babeljs.io)
+Build tools | [Gulp.js](http://gulpjs.com), [npm](https://www.npmjs.com)
 
-## Installation
+
+## Development
+
+Clone the repo and install depedencies:
 
 ```
-$ npm install && bower install
-$ gulp [develop|build]
-
-# start server
-$ node app/index.js
+git clone git@github.com:imperodesign/skeleton.git
+cd skeleton
+npm install
 ```
-Command `gulp develop` watches for file changes and contains source maps, and should be used in development. `gulp build` by contrast, strips and minifies code for production.
+
+Run build tasks with either Gulp or npm:
+```
+gulp develop
+npm run develop
+```
+
+Start the server:
+```
+node app/index.js
+```

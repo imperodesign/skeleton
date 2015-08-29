@@ -1,5 +1,7 @@
 require('dotenv').load()
 const express = require('express')
+const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
 const app = express()
 
 // Configuration
@@ -8,6 +10,11 @@ app.set('views', `${__dirname}/views`)
 app.set('view engine', 'jade')
 app.use('/static', express.static(`${__dirname}/static`))
 app.locals.pretty = (process.env.MINIFY === 'true')
+
+// Body parsing & Cookies
+app.use(bodyParser.urlencoded({ extended: false })) // application/x-www-form-urlencoded
+app.use(bodyParser.json()) // application/json
+app.use(cookieParser())
 
 // Routes
 require('./routes')(app)

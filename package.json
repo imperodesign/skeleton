@@ -6,7 +6,8 @@
   "scripts": {
     "develop": "npm run js:dev",
     "js:dev": "browserify app/static/js/index.js -t babelify --debug -o app/static/dist/index.js",
-    "js:prd": "browserify app/static/js/index.js -t babelify -t uglifyify -o app/static/dist/index.js"
+    "js:prd": "browserify app/static/js/index.js -t babelify -t uglifyify -o app/static/dist/index.js",
+    "start": "node --use_strict app/index"
   },
   "repository": {
     "type": "git",

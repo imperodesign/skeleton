@@ -38,5 +38,5 @@ npm run develop
 
 Start the server:
 ```
-node app/index.js
+npm start
 ```

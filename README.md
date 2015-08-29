@@ -1,5 +1,3 @@
-<p align='center'><img src='https://raw.githubusercontent.com/imperodesign/skeleton/master/app/static/src/img/skeleton-logo.png?raw=true'></p>
-
 # App Skeleton
 
 A starting point for a io.js application. A minimal, and hopefully elegant foundation that aims to reduce the time it takes to build an app from scratch.
@@ -39,3 +37,6 @@ Start the server:
 ```
 node app/index.js
 ```
+
+
+<p align='center'><img width='100' src='https://raw.githubusercontent.com/imperodesign/skeleton/master/app/static/src/img/skeleton-logo.png?raw=true'></p>

@@ -1,6 +1,6 @@
 {
   "name": "skeleton",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Starter skeleton for a web app",
   "main": "app/index.js",
   "scripts": {
@@ -30,16 +30,15 @@
     "express-mongo-db": "^2.0.3",
     "express-session": "^1.12.1",
     "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^2.3.1",
     "gulp-csso": "^1.0.0",
     "gulp-if": "^1.2.5",
     "gulp-load-plugins": "^0.10.0",
-    "gulp-stylus": "^2.0.5",
+    "gulp-sourdough": "^1.0.2",
     "gulp-uglify": "^1.2.0",
     "jade": "^1.11.0",
     "require-dir": "^0.3.0",
     "rupture": "^0.6.1",
-    "stylus": "^0.52.0",
+    "sourdough-reset": "^0.2.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   }

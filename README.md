@@ -3,18 +3,18 @@
 </p>
 # App Skeleton
 
-A starting point for an io.js application. A minimal, and hopefully elegant foundation that aims to reduce the time it takes to build an app from scratch.
+A starting point for an node.js application. A minimal, and hopefully elegant foundation that aims to reduce the time it takes to build an app from scratch.
 
 Using ECMAScript 6/7 wherever possible, and staying true to the [12 factor app](http://12factor.net). Tuned for the needs of our agency [Impero](http://weareimpero.com), but available to the public.
 
 ### Components
 Type | Name
 --- | ---
-Programming language | [io.js](https://iojs.org)
+Programming language | [node.js](https://nodejs.org)
 Web App framework | [Express.js](http://expressjs.com)
 Database | [MongoDB](https://www.mongodb.org)
 HTML Templating | [Jade](http://jade-lang.com)
-CSS Preprocessor | [Stylus](https://learnboost.github.io/stylus)
+CSS Preprocessor | [Sourdough](https://github.com/sourdough-css/preprocessor)
 Frontend modules | [Browserify](http://browserify.org)
 JavaScript transpiler | [Babel.js](http://babeljs.io)
 Build tools | [Gulp.js](http://gulpjs.com), [npm](https://www.npmjs.com)

@@ -1,7 +1,10 @@
-function helloWorld (req, res, next) {
-  res.render('pages/home')
-}
+const router = module.exports = require('express').Router()
+const exampleModel = require('./models/example')
 
-module.exports = function (app) {
-  app.get('/', helloWorld)
-}
+router.get('/', (req, res, next) => {
+  /*
+  const model = new exampleModel(req.db)
+  model.find()
+  */
+  res.render('pages/home')
+})
